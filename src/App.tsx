@@ -1,12 +1,18 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useSnackbar } from '~/hooks/useSnackbar'
+import Snackbar from '~/components/atoms/snackbar'
+import SnackbarContainer from '~/components/atoms/snackbar/SnackbarContainer'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
 function App() {
  const [count, setCount] = useState(0)
+ const { snackbars, handlePushSnackbar } = useSnackbar()
 
  return (
   <div className="App">
+   <SnackbarContainer />
+   <button onClick={() => handlePushSnackbar('가단어리ㅏㄴ얼나ㅣ어ㅣㅏ', 'Success')}>teset</button>
    <div>
     <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
      <img src="/vite.svg" className="logo" alt="Vite logo" />

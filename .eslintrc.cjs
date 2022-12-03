@@ -49,6 +49,8 @@ module.exports = {
   'react/no-unused-prop-types': 'off',
   'react/jsx-props-no-spreading': 'off',
   'react/button-has-type': 'off',
+  'no-bitwise': 'off',
+  'react-hooks/exhaustive-deps': 'off',
  },
  settings: {
   react: {
