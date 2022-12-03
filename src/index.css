@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.snackbar-show {
+ @apply transform animate-snackbar-show;
+}
+.snackbar-hide {
+ @apply transform animate-snackbar-hide;
+}
