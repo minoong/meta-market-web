@@ -50,6 +50,7 @@ module.exports = {
   'react/jsx-props-no-spreading': 'off',
   'react/button-has-type': 'off',
   'no-bitwise': 'off',
+  'no-plusplus': 'off',
   'react-hooks/exhaustive-deps': 'off',
  },
  settings: {
