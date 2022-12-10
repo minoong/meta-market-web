@@ -1,11 +1,12 @@
 import { mergeConfig, defineConfig as viteDefineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import { defineConfig } from 'vitest/config'
+import svgr from 'vite-plugin-svgr'
 import react from '@vitejs/plugin-react'
 
 export default mergeConfig(
  viteDefineConfig({
-  plugins: [react(), tsconfigPaths()],
+  plugins: [react(), tsconfigPaths(), svgr()],
  }),
  defineConfig({
   test: {

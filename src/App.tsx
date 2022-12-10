@@ -1,12 +1,10 @@
-import { Suspense, useEffect, useState } from 'react'
+import { Suspense, useState } from 'react'
 import { useSnackbar } from '~/hooks/useSnackbar'
-import Snackbar from '~/components/atoms/snackbar'
 import SnackbarContainer from '~/components/atoms/snackbar/SnackbarContainer'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import useMarketsTickerQuery from '~/hooks/query/useMarketsTickerQuery'
 import useMarketsQuery from '~/hooks/query/useMarketsQuery'
+import Header from '~/components/molecules/header'
 import reactLogo from './assets/react.svg'
-import './App.css'
 
 function Test() {
  const { data: data2 } = useMarketsTickerQuery()
@@ -23,22 +21,15 @@ function Test() {
 
 function App() {
  const [count, setCount] = useState(0)
- const { snackbars, handlePushSnackbar } = useSnackbar()
-
- const { data, status } = useMarketsQuery({
-  select: (data) => {
-   return 'fdsaf'
-  },
- })
- const { data: data2, refetch } = useMarketsTickerQuery()
+ const { handlePushSnackbar } = useSnackbar()
 
  return (
-  <div className="App">
+  <div className="w-full">
+   <Header />
    <SnackbarContainer />
    <button
     onClick={() => {
      handlePushSnackbar('가단어리ㅏㄴ얼나ㅣ어ㅣㅏ', 'Success')
-     //  refetch()
     }}
    >
     teset
