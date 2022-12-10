@@ -1,31 +1,24 @@
-import { GoogleAuthProvider, signInWithPopup, User } from 'firebase/auth'
-import React, { useState } from 'react'
+import React from 'react'
 import { Outlet } from 'react-router-dom'
+import SnackbarContainer from '~/components/atoms/snackbar/SnackbarContainer'
 import Header from '~/components/molecules/header'
-import { auth } from '~/firebase'
+import useAuth from '~/hooks/useAuth'
 
 function Layout() {
- const [userData, setUserData] = useState<User>()
+ const { auth, handleGoogleLogin, signOut } = useAuth()
 
- function handleGoogleLogin() {
-  const provider = new GoogleAuthProvider()
-  signInWithPopup(auth, provider)
-   .then((data) => {
-    setUserData(data.user)
-   })
-   .catch((err) => {
-    console.log(err)
-   })
- }
  return (
   <div className="w-full h-screen">
    <Header />
 
    <section>
     <button onClick={handleGoogleLogin}>Login</button>
-    {userData ? userData.displayName : null}
+    <button onClick={signOut}>signOut</button>
+    {auth ? auth.displayName : null}
     <Outlet />
    </section>
+
+   <SnackbarContainer />
   </div>
  )
 }

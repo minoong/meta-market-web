@@ -1,6 +1,7 @@
 import { Menu, MenuButton, MenuDivider, MenuGroup, MenuItem, MenuList } from '@chakra-ui/react'
 import React, { useEffect, useRef, useState } from 'react'
-import { ReactComponent as Profile } from '~/assets/svgs/profile.svg'
+import Profile from '~/components/molecules/profile'
+// import { ReactComponent as Profile } from '~/assets/svgs/profile.svg'
 
 function Header() {
  const [visible, setVisible] = useState<boolean>(false)
@@ -23,7 +24,7 @@ function Header() {
  return (
   <header
    ref={headerRef}
-   className={`bg-sky-600/80 px-4 py-3 backdrop-blur-sm sticky top-0 transition-all duration-300 ${
+   className={`bg-[#093687] px-4 py-3 backdrop-blur-sm sticky top-0 transition-all duration-300 ${
     visible ? `-translate-y-full` : `translate-y-0`
    }`}
   >
@@ -48,7 +49,8 @@ function Header() {
      </ul>
     </section>
     <section>
-     <div>
+     <Profile />
+     {/* <div>
       <Menu>
        <MenuButton className="custom-hover" _expanded={{ bg: 'blue.500' }} transition="all 0.2s">
         <Profile fill="white" width={30} />
@@ -65,7 +67,7 @@ function Header() {
         </MenuGroup>
        </MenuList>
       </Menu>
-     </div>
+     </div> */}
     </section>
    </nav>
   </header>
