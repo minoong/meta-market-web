@@ -25,3 +25,6 @@ dist-ssr
 
 # vitetest
 coverage
+
+#env
+.env*
