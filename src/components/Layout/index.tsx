@@ -9,7 +9,7 @@ function Layout() {
  const { auth, handleGoogleLogin, signOut } = useAuth()
 
  return (
-  <div className="w-full h-screen">
+  <div className="w-full h-full">
    <Header />
 
    <section>

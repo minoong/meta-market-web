@@ -13,18 +13,20 @@ function Profile() {
      <MenuButton className="hover:scale-105" _expanded={{ transform: 'scale(1.05, 1.05)' }} transition="all 0.2s">
       <Avatar name={auth.email ?? ''} imageUrl={auth.photoURL ?? ''} />
      </MenuButton>
-     <MenuList>
-      <MenuGroup title="Profile">
-       <MenuItem>My Account</MenuItem>
-       <MenuItem>Payments </MenuItem>
-      </MenuGroup>
-      <MenuDivider />
-      <MenuGroup title="Help">
-       <MenuItem>Docs</MenuItem>
-       <MenuItem>FAQ</MenuItem>
-       <MenuItem onClick={() => signOut()}>로그아웃</MenuItem>
-      </MenuGroup>
-     </MenuList>
+     <div className="z-[898989] bg-black">
+      <MenuList className="z-[898989]">
+       <MenuGroup title="Profile">
+        <MenuItem>My Account</MenuItem>
+        <MenuItem>Payments </MenuItem>
+       </MenuGroup>
+       <MenuDivider />
+       <MenuGroup title="Help">
+        <MenuItem>Docs</MenuItem>
+        <MenuItem>FAQ</MenuItem>
+        <MenuItem onClick={() => signOut()}>로그아웃</MenuItem>
+       </MenuGroup>
+      </MenuList>
+     </div>
     </Menu>
    ) : (
     <Button disabled={isPending} onClick={() => handleGoogleLogin()} color="transport" outline={isPending}>
