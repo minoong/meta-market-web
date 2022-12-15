@@ -21,8 +21,8 @@ function useMarketsTickerQuery<T = GetMarketsTicker>(options: UniversalUseQueryO
  const { data: symbols = '' } = useMarketsQuery({
   select: (data) => {
    const symbols = data
+    .filter(({ market }) => market.startsWith('KRW-'))
     .map(({ market }) => market)
-    .slice(0, 10)
     .join(',')
 
    return symbols

@@ -51,6 +51,7 @@ module.exports = {
   'react/button-has-type': 'off',
   'no-bitwise': 'off',
   'no-plusplus': 'off',
+  'no-nested-ternary': 'off',
   'react-hooks/exhaustive-deps': 'off',
  },
  settings: {
