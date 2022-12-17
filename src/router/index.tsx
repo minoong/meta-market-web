@@ -2,6 +2,7 @@ import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from '~/components/Layout'
 import Home from '~/pages/Home'
+import Exchange from '~/pages/markets/Exchange'
 
 const router = createBrowserRouter([
  {
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
    {
     path: '/',
     element: <Home />,
+   },
+   {
+    path: '/exchange/:symbol?',
+    element: <Exchange />,
    },
   ],
  },

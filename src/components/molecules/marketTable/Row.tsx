@@ -2,6 +2,7 @@
 import clsx from 'clsx'
 import { Avatar } from 'flowbite-react'
 import React, { useMemo } from 'react'
+import { NavLink } from 'react-router-dom'
 import Candle from '~/components/atoms/candle'
 import Price from '~/components/molecules/marketTable/Price'
 import useMarketsQuery from '~/hooks/query/useMarketsQuery'
@@ -49,17 +50,23 @@ function Row(props: Props) {
  })
 
  return (
-  <tr>
+  <tr className="hover:bg-slate-100 transition-all duration-150 cursor-default">
    <td>
-    <Avatar img={`https://static.upbit.com/logos/${market.split('-')[1]}.png`} rounded size="xs" alt={market} />
+    <div className="flex justify-center items-center">
+     <img
+      src={`https://static.upbit.com/logos/${market.split('-')[1]}.png`}
+      className="rounded-full w-3"
+      alt={market}
+     />
+    </div>
    </td>
    <td>
-    <div className="bg-slate-100 w-full flex justify-center">
-     <svg width={10} height={26 * 1.2}>
+    <div className="w-full flex justify-center">
+     <svg width={10} height={15}>
       <Candle
        fill={change === 'RISE' ? '#c84a31' : '#1261c4'}
        width={10}
-       height={26 * 1.2}
+       height={15}
        price={{
         opening: opening_price,
         trade: trade_price,
@@ -70,11 +77,13 @@ function Row(props: Props) {
      </svg>
     </div>
    </td>
-   <td>
-    <div className="text-xs font-bold">{data && data.korean_name}</div>
-    <div className="text-[6px] text-gray-600 font-semibold">{marketKrwSymbol}</div>
+   <td className="px-1">
+    <NavLink className="text-xs font-bold !cursor-pointer hover:underline" to={`/exchange/${data?.market}`}>
+     {data && data.korean_name}
+    </NavLink>
+    <div className="text-[6px] text-gray-500 font-semibold">{marketKrwSymbol}</div>
    </td>
-   <td>
+   <td className="px-1">
     <Price
      tradePrice={trade_price.toLocaleString()}
      yesterdayChnage={change}
@@ -82,8 +91,8 @@ function Row(props: Props) {
      isFirstRender={previousChange === undefined}
     />
    </td>
-   <td>
-    <div className={`${isRise} text-[6px] font-semibold`}>
+   <td className="px-1">
+    <div className={`${isRise} text-[6px] font-semibold text-right`}>
      <div>
       {signed_change_rate > 0 ? '+' : ''}
       {(signed_change_rate * 100).toFixed(2)}%
@@ -91,9 +100,11 @@ function Row(props: Props) {
      <div>{signed_change_price.toLocaleString()}</div>
     </div>
    </td>
-   <td>
-    <span className="text-[6px] font-semibold">{MarketUtils.numberToHuman(acc_trade_price_24h)[0]}</span>
-    <span className="text-[6px] text-gray-600 font-semibold">{MarketUtils.numberToHuman(acc_trade_price_24h)[1]}</span>
+   <td className="px-1">
+    <div className="text-right">
+     <span className="text-[6px] font-semibold">{MarketUtils.numberToHuman(acc_trade_price_24h)[0]}</span>
+     <span className="text-[6px] text-gray-500 font-semibold">{MarketUtils.numberToHuman(acc_trade_price_24h)[1]}</span>
+    </div>
    </td>
   </tr>
  )

@@ -13,13 +13,13 @@ function MarketCardSkeleton(props: Props) {
     .fill(null)
     .map((_, i) => (
      // eslint-disable-next-line react/no-array-index-key
-     <div className="flex gap-1 p-5" key={i}>
-      <SkeletonCircle size="10" />
+     <div className="flex gap-1 p-1" key={i}>
+      <SkeletonCircle size="4" />
       <div className="w-full flex gap-1">
-       <Skeleton height="40px" w="30%" />
-       <Skeleton height="40px" w="30%" />
-       <Skeleton height="40px" w="30%" />
-       <Skeleton height="40px" w="10%" />
+       <Skeleton height="15px" w="30%" />
+       <Skeleton height="15px" w="30%" />
+       <Skeleton height="15px" w="30%" />
+       <Skeleton height="15px" w="10%" />
       </div>
      </div>
     ))}
