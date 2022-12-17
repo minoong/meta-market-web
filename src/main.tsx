@@ -4,8 +4,10 @@ import ReactDOM from 'react-dom/client'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { ChakraProvider } from '@chakra-ui/react'
 
-import { Provider } from 'jotai'
-import { store } from '~/stores/jotai/store'
+import { Provider as JotaiProvider } from 'jotai'
+import { store as jotaiStore } from '~/stores/jotai/store'
+import { Provider as ReduxProvider } from 'react-redux'
+import { store as reduxStore } from '~/stores/redux/store'
 import App from './App'
 import './index.css'
 
@@ -20,15 +22,17 @@ const queryClient = new QueryClient({
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
  <React.StrictMode>
-  <ChakraProvider>
-   <Provider unstable_createStore={() => store}>
-    <QueryClientProvider client={queryClient}>
-     <Suspense fallback={<div>loading</div>}>
-      <App />
-     </Suspense>
-     <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
-   </Provider>
-  </ChakraProvider>
+  <ReduxProvider store={reduxStore}>
+   <ChakraProvider>
+    <JotaiProvider unstable_createStore={() => jotaiStore}>
+     <QueryClientProvider client={queryClient}>
+      <Suspense fallback={<div>loading</div>}>
+       <App />
+      </Suspense>
+      <ReactQueryDevtools initialIsOpen={false} />
+     </QueryClientProvider>
+    </JotaiProvider>
+   </ChakraProvider>
+  </ReduxProvider>
  </React.StrictMode>,
 )
