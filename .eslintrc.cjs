@@ -53,6 +53,13 @@ module.exports = {
   'no-plusplus': 'off',
   'no-nested-ternary': 'off',
   'react-hooks/exhaustive-deps': 'off',
+  'no-param-reassign': [
+   'error',
+   {
+    props: true,
+    ignorePropertyModificationsFor: ['state'],
+   },
+  ],
  },
  settings: {
   react: {
