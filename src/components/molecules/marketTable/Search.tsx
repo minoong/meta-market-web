@@ -9,7 +9,7 @@ function Search() {
  const dispatch = useAppDispatch()
 
  return (
-  <div className="w-full relative flex items-center p-1 border-b">
+  <div className="w-full flex items-center p-1 border-b">
    <input
     className="flex-1 outline-none border-0 p-1 text-gray-800 pr-9"
     type="text"

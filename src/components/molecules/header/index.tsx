@@ -1,5 +1,8 @@
-import { Menu, MenuButton, MenuDivider, MenuGroup, MenuItem, MenuList } from '@chakra-ui/react'
 import React, { useEffect, useRef, useState } from 'react'
+import { BiLineChart } from 'react-icons/bi'
+import { BsFillCreditCardFill } from 'react-icons/bs'
+import { NavLink } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import Profile from '~/components/molecules/profile'
 // import { ReactComponent as Profile } from '~/assets/svgs/profile.svg'
 
@@ -8,45 +11,59 @@ function Header() {
  const [pageY, setPageY] = useState<number>(0)
  const headerRef = useRef<HTMLElement>(null)
 
- useEffect(() => {
-  const handleScroll = () => {
-   const { pageYOffset } = window
-   const deltaY = pageYOffset - pageY
-   const hide = pageYOffset !== 0 && deltaY >= 0
+ //  useEffect(() => {
+ //   const handleScroll = () => {
+ //    const { pageYOffset } = window
+ //    const deltaY = pageYOffset - pageY
+ //    const hide = pageYOffset !== 0 && deltaY >= 0
 
-   setVisible(hide)
-   setPageY(pageYOffset)
-  }
-  document.addEventListener('scroll', handleScroll)
-  return () => document.removeEventListener('scroll', handleScroll)
- }, [pageY])
+ //    setVisible(hide)
+ //    setPageY(pageYOffset)
+ //   }
+ //   document.addEventListener('scroll', handleScroll)
+ //   return () => document.removeEventListener('scroll', handleScroll)
+ //  }, [pageY])
 
  return (
   <header
    ref={headerRef}
-   className={`bg-[#093687] px-4 py-3 backdrop-blur-sm sticky top-0 transition-all duration-300 ${
+   className={`bg-[#093687] px-4 py-3 backdrop-blur-sm fixed z-[989898] w-full transition-all duration-300 ${
     visible ? `-translate-y-full` : `translate-y-0`
    }`}
   >
    <nav className="w-full flex justify-between items-center">
     <section className="flex justify-between items-center">
      <div className="px-3 scale-110 sm:scale-100 transition-all duration-300">
-      <a href="/" className="custom-hover">
+      <NavLink to="/" className="custom-hover">
        META MARKET
-      </a>
+      </NavLink>
      </div>
-     <ul className="hidden sm:flex items-center space-x-6 ml-20">
-      <li>
-       <a href="/exchange" className="custom-hover">
-        거래소
-       </a>
-      </li>
-      <li>
-       <a href="/exchange" className="custom-hover">
-        입출금
-       </a>
-      </li>
-     </ul>
+     <motion.div initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5 }}>
+      <ul className="hidden sm:flex items-center space-x-6 ml-20">
+       <li>
+        <NavLink
+         to="/exchange"
+         className={({ isActive }) =>
+          `custom-hover flex items-center gap-1 ${isActive ? 'text-white' : '!text-gray-400'}`
+         }
+        >
+         <BiLineChart />
+         거래소
+        </NavLink>
+       </li>
+       <li>
+        <NavLink
+         to="/balances"
+         className={({ isActive }) =>
+          `custom-hover flex items-center gap-1 ${isActive ? 'text-white' : '!text-gray-400'}`
+         }
+        >
+         <BsFillCreditCardFill />
+         입출금
+        </NavLink>
+       </li>
+      </ul>
+     </motion.div>
     </section>
     <section>
      <Profile />

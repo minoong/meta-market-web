@@ -12,3 +12,12 @@
 .custom-hover {
  @apply cursor-pointer hover:bg-sky-700 rounded-full transition duration-100 ease-out text-white font-bold p-1.5;
 }
+
+html,
+body {
+ height: 100%;
+}
+
+#root {
+ height: 100%;
+}

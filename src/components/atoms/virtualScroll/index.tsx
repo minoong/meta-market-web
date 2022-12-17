@@ -35,12 +35,12 @@ const VirtualScroll = ({ children, height, itemHeight, y, columnGap = 0, renderA
    <div style={{ transform: `translateY(${translateY}px)` }}>
     <table>
      <colgroup>
-      <col width="26" />
-      <col width="26" />
+      <col width="20" />
+      <col width="20" />
       <col width="94" />
       <col width="98" />
       <col width="58" />
-      <col width="*" />
+      <col width="90" />
      </colgroup>
      <tbody>{visibleItem}</tbody>
     </table>
