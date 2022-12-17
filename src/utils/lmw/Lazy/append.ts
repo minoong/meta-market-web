@@ -1,4 +1,3 @@
-import { B } from 'vitest/dist/types-de0e0997'
 import concurrent, { isConcurrent } from '~/utils/lmw/Lazy/concurrent'
 import Awaited from '~/utils/lmw/types/Awaited'
 import ReturnIterableIteratorType from '~/utils/lmw/types/ReturnIterableIteratorType'
